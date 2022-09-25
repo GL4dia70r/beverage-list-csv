@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace cis237_assignment_1
 {
@@ -7,15 +8,9 @@ namespace cis237_assignment_1
     {
         static void Main(string[] args)
         {
-            Beverage beverages = new Beverage();
-
             UserInterface ui = new UserInterface();
 
-            string pathToCSVFile = "../../../beverage_list.csv";
-
-            CSVContainer csvContainer = new CSVContainer();
-
-            csvContainer.CsvImportPath(pathToCSVFile, beverages);
+            CSVContainer container = new CSVContainer();
 
             string choice = ui.GetUserInput();
 
@@ -23,21 +18,22 @@ namespace cis237_assignment_1
             {
                 if (choice == "a")
                 {
-                    OpenAccess.Read.Equals(pathToCSVFile);
-                }
-                else if (choice == "b")
-                {
-                    string outputString = "";
+                    string pathToCSVFile = "../../../beverage_list.csv";
 
-                    foreach (Beverage beverage in beverages)
+                    Beverage[] drinks = new Beverage[pathToCSVFile.Length];
+
+                    container.CsvImportPath(pathToCSVFile, drinks);
+
+                    while (choice != "e")
                     {
-                        if (beverage != null)
+                        if (choice == "b")
                         {
-                            outputString += beverage.ToString() +
-                                Environment.NewLine;
+                           
+
                         }
-                    }    
+                    }
                 }
+                choice = ui.GetUserInput();
             }
         }
     }

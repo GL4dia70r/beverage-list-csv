@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace cis237_assignment_1
         {
             this.PrintMenu();
 
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
             
             this.UserInput(input);
 
@@ -32,14 +33,25 @@ namespace cis237_assignment_1
             
         }
 
-        public void PrintList()
+        public void PrintList(string oList)
         {
-
+            Console.WriteLine("List printing");
+            Console.WriteLine("ID \t DRINK \t \t PACK \t PRICE \t ACTIVE");
+            Console.WriteLine(oList);
         }
 
         public void PrintErrorMessage()
         {
+            Console.WriteLine("The entry you chose does not exist...");
+            Console.WriteLine("Please try again.");
+            Console.WriteLine();
+        }
 
+        public void PrintUnreadFileErrorMsg()
+        {
+            Console.WriteLine("You need to 'load' the file first before choosing an option");
+            Console.WriteLine("Please try again.");
+            Console.WriteLine();
         }
 
         private string UserInput(string uInput)
@@ -51,8 +63,18 @@ namespace cis237_assignment_1
                 this.PrintMenu();
 
                 uInput = Console.ReadLine();
+
+                if (uInput == "e")
+                {
+                    
+                }
             }
             return uInput.ToLower();
+        }
+
+        public void GetUserSearch(string uInput) 
+        {
+            
         }
     }
 }
