@@ -8,9 +8,15 @@ namespace cis237_assignment_1
     {
         static void Main(string[] args)
         {
+            
+
             UserInterface ui = new UserInterface();
 
-            CSVContainer container = new CSVContainer();
+            CSVContainer proc = new CSVContainer();
+
+            Beverage[] drinks = new Beverage[4142];
+
+            string pathToCSVFile = "../../beverage_list.csv";
 
             string choice = ui.GetUserInput();
 
@@ -18,20 +24,36 @@ namespace cis237_assignment_1
             {
                 if (choice == "a")
                 {
-                    string pathToCSVFile = "../../../beverage_list.csv";
+                    proc.CsvImportPath(pathToCSVFile, drinks);
 
-                    Beverage[] drinks = new Beverage[pathToCSVFile.Length];
+                    string choice2 = ui.GetNewUserInput();
 
-                    container.CsvImportPath(pathToCSVFile, drinks);
+                       if (choice2 == "b")
+                       {
+                            string putString = "";
 
-                    while (choice != "e")
-                    {
-                        if (choice == "b")
-                        {
-                           
+                            foreach (Beverage beverage in drinks)
+                            {
+                                putString += beverage.ToString() +
+                                    Environment.NewLine;
+                            }
+                            ui.PrintList(putString);
+                       }
+                       else if (choice2 == "c")
+                       {
+                            string userInput = Console.ReadLine();
 
-                        }
-                    }
+                            foreach (Beverage beverage in drinks)
+                            {
+                                Array.Sort(drinks);
+
+                                Array.BinarySearch(drinks, userInput);
+                            }
+                            Console.WriteLine(userInput);
+                       }
+                       choice2 = ui.GetNewUserInput();
+                                                 
+
                 }
                 choice = ui.GetUserInput();
             }

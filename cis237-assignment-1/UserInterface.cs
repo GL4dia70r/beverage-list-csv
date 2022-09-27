@@ -10,16 +10,33 @@ namespace cis237_assignment_1
 {
     internal class UserInterface
     {
+        CSVContainer processor = new CSVContainer();
+        Beverage[] beverages = null;
+
         public string GetUserInput()
         {
             this.PrintMenu();
 
             string input = Console.ReadLine().ToLower();
             
-            this.UserInput(input);
-
-            return input;
+            return this.UserInput(input);                       
         }
+
+        public string GetNewUserInput()
+        {
+            this.NewPrintMenu();
+
+            string input = Console.ReadLine().ToLower();
+
+            return this.UserInput(input);
+        }
+
+        //public string GetFile(string filePath)
+        //{
+        //    processor.CsvImportPath(filePath, beverages);
+
+        //    return beverages[4142].ToString();
+        //}
 
         public void PrintMenu()
         {
@@ -32,7 +49,15 @@ namespace cis237_assignment_1
             Console.WriteLine();
             
         }
-
+        public void NewPrintMenu()
+        {
+            Console.WriteLine("What would you like to do with the file selected?");
+            Console.WriteLine("b. Print List from select file");
+            Console.WriteLine("c. Search List from select file");
+            Console.WriteLine("d. Add a New Beverage to the List from select file");
+            Console.WriteLine("e. Exit");
+            Console.WriteLine();
+        }
         public void PrintList(string oList)
         {
             Console.WriteLine("List printing");
@@ -63,18 +88,8 @@ namespace cis237_assignment_1
                 this.PrintMenu();
 
                 uInput = Console.ReadLine();
-
-                if (uInput == "e")
-                {
-                    
-                }
             }
             return uInput.ToLower();
-        }
-
-        public void GetUserSearch(string uInput) 
-        {
-            
         }
     }
 }

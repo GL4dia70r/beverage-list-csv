@@ -48,9 +48,9 @@ namespace cis237_assignment_1
         {
             string[] description = line.Split(',');
 
-            string iD = description[0].ToString();
+            string iD = description[0];
             string bevName = description[1];
-            string packAmount = description[2].ToString();
+            string packAmount = description[2];
             decimal approxPrice = decimal.Parse(description[3]);
             bool isActive = bool.Parse(description[4]);
 

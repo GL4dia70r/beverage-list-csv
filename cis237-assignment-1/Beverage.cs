@@ -54,11 +54,6 @@ namespace cis237_assignment_1
         //*************************
         // Methods
         //*************************
-        public string findBevNameWithId()
-        {
-            return _bevName + " " + _iD;
-        }
-
         public override string ToString()
         {
             return _iD + " \t " + _bevName + " \t " + _packAmount + " \t " + _approxPrice + " \t " + _isActive;

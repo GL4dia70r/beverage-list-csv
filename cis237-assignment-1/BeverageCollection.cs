@@ -13,18 +13,29 @@ namespace cis237_assignment_1
 {
     internal class BeverageCollection
     {
-        public BeverageCollection(string csvPath)
+        Beverage[] beverages = new Beverage[4142];
+
+        private string _iD;
+        private string _name;
+
+        public string ID
         {
-            Beverage[] beverages = new Beverage[csvPath.Length];
-
-            string uInput = Console.ReadLine();
-
-            string result = Array.Find(uInput, beverages);
+            get { return _iD; }
+            set { _iD = value; }
         }
 
-        public static string FindDrink(Beverage[] drink, string uInput)
+        public string Name
         {
-            return drink.Find(uInput);
+            get { return _name; }
+            set { _name = value; }   
         }
+
+       public string IdAndBeverage()
+        {
+            return _iD + " " + _name;   
+        }
+
+
+
     }
 }
