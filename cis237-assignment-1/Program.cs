@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 
 namespace cis237_assignment_1
@@ -8,15 +10,13 @@ namespace cis237_assignment_1
     {
         static void Main(string[] args)
         {
-            
+            Beverage[] drinks = new Beverage[4142];
 
             UserInterface ui = new UserInterface();
 
             CSVContainer proc = new CSVContainer();
 
-            Beverage[] drinks = new Beverage[4142];
-
-            string pathToCSVFile = "../../beverage_list.csv";
+            string CSVFile = "../../../beverage_list.csv";
 
             string choice = ui.GetUserInput();
 
@@ -24,37 +24,54 @@ namespace cis237_assignment_1
             {
                 if (choice == "a")
                 {
-                    proc.CsvImportPath(pathToCSVFile, drinks);
+                    proc.CsvImportPath(CSVFile, drinks);
 
-                    string choice2 = ui.GetNewUserInput();
+                    Console.WriteLine("File loaded...");                                                        
+                }
+                while (proc.CsvImportPath(CSVFile, drinks))
+                {
+                    if (choice == "a")
+                    {
+                        Console.WriteLine("You already loaded the file...");
+                        break;
+                    }
 
-                       if (choice2 == "b")
-                       {
-                            string putString = "";
+                    if (choice == "b")
+                    {
+                        string putString = "";
 
-                            foreach (Beverage beverage in drinks)
+                        foreach (Beverage beverage in drinks)
+                        {
+                            if (beverage != null)
                             {
                                 putString += beverage.ToString() +
                                     Environment.NewLine;
                             }
-                            ui.PrintList(putString);
-                       }
-                       else if (choice2 == "c")
-                       {
-                            string userInput = Console.ReadLine();
+                        }
+                        ui.PrintList(putString);
+                        Console.WriteLine();
+                        Console.WriteLine("List Printed...");
+                        break;
+                    }
+                    else if (choice == "c")
+                    {
+                        Console.WriteLine("What drink (ID) do you need to find? ");
+                        string userInput = Console.ReadLine();
 
-                            foreach (Beverage beverage in drinks)
+                        foreach (Beverage drink in drinks)
+                        {
+                            if (drink != null)
                             {
-                                Array.Sort(drinks);
 
-                                Array.BinarySearch(drinks, userInput);
                             }
-                            Console.WriteLine(userInput);
-                       }
-                       choice2 = ui.GetNewUserInput();
+                        }
+
+                    }
+                    choice = ui.GetNewUserInput();
+                }
                                                  
 
-                }
+                
                 choice = ui.GetUserInput();
             }
         }

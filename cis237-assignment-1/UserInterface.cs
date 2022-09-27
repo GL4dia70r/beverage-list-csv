@@ -24,13 +24,23 @@ namespace cis237_assignment_1
 
         public string GetNewUserInput()
         {
-            this.NewPrintMenu();
+            this.PrintNewMenu();
 
             string input = Console.ReadLine().ToLower();
 
             return this.UserInput(input);
         }
 
+        public void PrintNewMenu()
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("b. Print List from select file");
+            Console.WriteLine("c. Search List from select file");
+            Console.WriteLine("d. Add a New Beverage to the List from select file");
+            Console.WriteLine("e. Exit");
+            Console.WriteLine();
+
+        }
         //public string GetFile(string filePath)
         //{
         //    processor.CsvImportPath(filePath, beverages);
@@ -49,15 +59,7 @@ namespace cis237_assignment_1
             Console.WriteLine();
             
         }
-        public void NewPrintMenu()
-        {
-            Console.WriteLine("What would you like to do with the file selected?");
-            Console.WriteLine("b. Print List from select file");
-            Console.WriteLine("c. Search List from select file");
-            Console.WriteLine("d. Add a New Beverage to the List from select file");
-            Console.WriteLine("e. Exit");
-            Console.WriteLine();
-        }
+        
         public void PrintList(string oList)
         {
             Console.WriteLine("List printing");

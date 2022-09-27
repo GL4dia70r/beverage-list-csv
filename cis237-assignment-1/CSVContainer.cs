@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace cis237_assignment_1
             {
                 string line;
 
-                streamR = new StreamReader(pathToCSV);
+                streamR = new StreamReader(File.OpenRead(pathToCSV));
 
                 int count = 0;
 
