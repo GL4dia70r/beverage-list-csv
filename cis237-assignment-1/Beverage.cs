@@ -1,4 +1,7 @@
-﻿using System;
+﻿// David Allen
+// CIS 237
+// 09/27/22
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,30 +24,41 @@ namespace cis237_assignment_1
         //*************************
         // Properties
         //*************************
+        /// <summary>
+        /// Gets ID
+        /// </summary>
         public string ID
         {
             get { return _iD; }
             set { _iD = value; }
         }
-
+        /// <summary>
+        /// Gets beverage name
+        /// </summary>
         public string BevName
         {
             get { return _bevName; }
             set { _bevName = value; }
         }
-
+        /// <summary>
+        /// gets the beverage pack
+        /// </summary>
         public string PackAmount
         {
             get { return _packAmount; }
             set { _packAmount = value; }
         }
-
+        /// <summary>
+        /// Gets the beverage price
+        /// </summary>
         public decimal ApproxPrice
         {
             get { return _approxPrice; }
             set { _approxPrice = value; }
         }
-
+        /// <summary>
+        /// Gets the beverage activity
+        /// </summary>
         public bool isActive
         {
             get { return _isActive; }
@@ -54,6 +68,10 @@ namespace cis237_assignment_1
         //*************************
         // Methods
         //*************************
+        /// <summary>
+        /// ToString Override for each variable
+        /// </summary>
+        /// <returns>variables as string</returns>
         public override string ToString()
         {
             return _iD + " \t " + _bevName + " \t " + _packAmount + " \t " + _approxPrice + " \t " + _isActive;
@@ -62,6 +80,14 @@ namespace cis237_assignment_1
         //*************************
         // Constructors
         //*************************
+        /// <summary>
+        /// Organizes each variable
+        /// </summary>
+        /// <param name="iD">stores variable into constructor variable</param>
+        /// <param name="bevName">stores variable into constructor variable</param>
+        /// <param name="packAmount">stores variable into constructor variable</param>
+        /// <param name="approxPrice">stores variable into constructor variable</param>
+        /// <param name="isActive">stores variable into constructor variable</param>
         public Beverage(string iD, string bevName, string packAmount, decimal approxPrice, bool isActive)
         {
             this._iD = iD;
